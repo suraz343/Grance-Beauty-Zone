@@ -21,11 +21,11 @@ export default function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="bg-white border-b sticky top-0 z-50 shadow">
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <Link href="/" className="text-2xl font-bold text-blue-700">
+    <header className="bg-white border-b sticky top-0 z-50">
+      <div className="container mx-auto px-4 py-2 flex justify-between items-center shadow">
+        <Link href="/" className="text-lg md:text-2xl font-bold text-blue-700">
           Grance Beauty Zone
-          <p className="text-sm text-blue-500">Parasi-3 NawalParasi</p>
+          <p className="text-sm md:text-sm text-blue-600">Parasi-3 NawalParasi</p>
         </Link>
         
 
@@ -42,7 +42,7 @@ export default function Header() {
               {item.label}
             </Link>
           ))}
-          <Link href="/book" className="px-4 py-2 bg-blue-600 text-white rounded-lg">
+          <Link href="/book" className="px-4 py-2 bg-yellow-400 text-white rounded-lg">
             Book Now
           </Link>
         </nav>
@@ -70,7 +70,7 @@ export default function Header() {
           ))}
           <Link
             href="/book"
-            className="block text-center py-2 mt-2 bg-blue-600 text-white rounded-lg"
+            className="block text-center py-2 mt-2 bg-yellow-400 text-white rounded-lg"
             onClick={() => setIsMenuOpen(false)}
           >
             Book Now
