@@ -1,4 +1,7 @@
-import React from "react";
+"use client";
+import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
 
 const services = [
     {
@@ -6,8 +9,8 @@ const services = [
       description: "Expert hair styling for any occasion",
       price: "Starting from $50",
       duration: "1 hour",
-      image: "/hair-styling.jpg",
-      gallery: ["/hair-1.jpg", "/hair-2.jpg", "/hair-3.jpg", "/hair-4.jpg"],
+      image: "/images/hair-1.jpg",
+      gallery: ["/images/hair-1.jpg", "/images/hair-2.jpg", "/images/hair-3.jpg", "/images/hair-4.jpg"],
     },
     {
       title: "Makeup",
@@ -50,12 +53,80 @@ const services = [
       gallery: ["/massage-1.jpg", "/massage-2.jpg", "/massage-3.jpg", "/massage-4.jpg"],
     },
   ]
-export default function Services(){
-    return(
-        <div className="flex flex-col items-center justify-center">
-            <h1 className="text-2xl md:text-4xl font-bold">Our Services</h1>
 
+export default function Services() {
+  const [activeTab, setActiveTab] = useState(services[0].title);
 
-        </div>
-    );
+  return (
+    <div className="container mx-auto px-4 py-16">
+      <h1 className="text-4xl font-bold mb-12 text-center">Our Services</h1>
+      {/* Tab Buttons */}
+      <div className="grid w-full grid-cols-2 lg:grid-cols-3 mb-8 gap-2">
+        {services.map((service) => (
+          <button
+            key={service.title}
+            onClick={() => setActiveTab(service.title)}
+            className={`py-2 px-4 text-center rounded-lg ${
+              activeTab === service.title ? "bg-blue-500 text-white" : "bg-gray-200"
+            }`}
+          >
+            {service.title}
+          </button>
+        ))}
+      </div>
+
+      {/* Tab Content */}
+      {services.map(
+        (service) =>
+          activeTab === service.title && (
+            <div
+              key={service.title}
+              className="border p-6 rounded-lg shadow-lg space-y-6"
+            >
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                  <h2 className="text-2xl font-semibold mb-2">{service.title}</h2>
+                  <p>{service.description}</p>
+                  <p className="mt-4">
+                    <strong>Price:</strong> {service.price}
+                  </p>
+                  <p>
+                    <strong>Duration:</strong> {service.duration}
+                  </p>
+                  <Link
+                    href="/book"
+                    className="mt-4 inline-block px-4 py-2 bg-blue-500 text-white rounded-lg"
+                  >
+                    Book Now
+                  </Link>
+                </div>
+                <Image
+                  src={service.image || "/placeholder.svg"}
+                  alt={service.title}
+                  width={400}
+                  height={300}
+                  className="w-full h-48 object-cover rounded-lg"
+                />
+              </div>
+
+              <div>
+                <h3 className="text-lg font-semibold mb-2">Gallery</h3>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                  {service.gallery.map((img, index) => (
+                    <Image
+                      key={index}
+                      src={img || "/placeholder.svg"}
+                      alt={`${service.title} ${index + 1}`}
+                      width={200}
+                      height={200}
+                      className="w-full h-32 object-cover rounded-lg"
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+          )
+      )}
+    </div>
+  );
 }
