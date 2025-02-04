@@ -4,8 +4,8 @@ import Link from "next/link";
 
 export default function Hero() {
   return (
-    <div className="w-full h-screen relative">
-      <div className="w-full h-3/4 relative">
+    <div className="w-full h-screen">
+      <div className="w-full h-3/4">
         <Image
           src="/Images/grance_beauty_zone.jpg"
           alt="grance_beauty_zone_image"
