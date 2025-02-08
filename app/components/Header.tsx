@@ -5,9 +5,10 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 
+
 const navItems = [
   { href: "/", label: "Home" },
-  { href: "/services", label: "Services" },
+  { href: "#services", label: "Services" },
   { href: "/products", label: "Products" },
   { href: "/offers", label: "Offers" },
   { href: "/blog", label: "Blog" },

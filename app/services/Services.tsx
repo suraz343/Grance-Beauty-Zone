@@ -64,7 +64,7 @@ export default function Services() {
   const [activeTab, setActiveTab] = useState(services[0].title);
 
   return (
-    <div className="container mx-auto px-4 py-16">
+    <div id="services" className="container mx-auto px-4 py-16">
       <h1 className="text-4xl font-bold mb-12 text-center">Our Services</h1>
       {/* Tab Buttons */}
       <div className="grid w-full grid-cols-2 lg:grid-cols-3 mb-8 gap-4">
