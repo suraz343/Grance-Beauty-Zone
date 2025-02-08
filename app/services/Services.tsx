@@ -4,55 +4,61 @@ import Image from "next/image";
 import Link from "next/link";
 
 const services = [
-    {
-      title: "Hair Styling",
-      description: "Expert hair styling for any occasion",
-      price: "Starting from $50",
-      duration: "1 hour",
-      image: "/images/hair-1.jpg",
-      gallery: ["/images/hair-1.jpg", "/images/hair-2.jpg", "/images/hair-3.jpg", "/images/hair-4.jpg"],
-    },
-    {
-      title: "Makeup",
-      description: "Professional makeup application",
-      price: "Starting from $60",
-      duration: "45 minutes",
-      image: "/makeup.jpg",
-      gallery: ["/makeup-1.jpg", "/makeup-2.jpg", "/makeup-3.jpg", "/makeup-4.jpg"],
-    },
-    {
-      title: "Nail Care",
-      description: "Manicure and pedicure services",
-      price: "Starting from $40",
-      duration: "1 hour",
-      image: "/nail-care.jpg",
-      gallery: ["/nails-1.jpg", "/nails-2.jpg", "/nails-3.jpg", "/nails-4.jpg"],
-    },
-    {
-      title: "Facial Treatments",
-      description: "Rejuvenating facial treatments",
-      price: "Starting from $70",
-      duration: "1 hour",
-      image: "/facial.jpg",
-      gallery: ["/facial-1.jpg", "/facial-2.jpg", "/facial-3.jpg", "/facial-4.jpg"],
-    },
-    {
-      title: "Waxing",
-      description: "Full body waxing services",
-      price: "Starting from $30",
-      duration: "30 minutes",
-      image: "/waxing.jpg",
-      gallery: ["/waxing-1.jpg", "/waxing-2.jpg", "/waxing-3.jpg", "/waxing-4.jpg"],
-    },
-    {
-      title: "Massage",
-      description: "Relaxing massage therapies",
-      price: "Starting from $80",
-      duration: "1 hour",
-      image: "/massage.jpg",
-      gallery: ["/massage-1.jpg", "/massage-2.jpg", "/massage-3.jpg", "/massage-4.jpg"],
-    },
-  ]
+  {
+    img: "/images/hair-1.jpg",
+    title: "Hair Styling",
+    description: "Expert hair styling for any occasion",
+    price: "Starting from $50",
+    duration: "1 hour",
+    image: "/images/hair-1.jpg",
+    gallery: ["/images/hair-1.jpg", "/images/hair-2.jpg", "/images/hair-3.jpg", "/images/hair-4.jpg"],
+  },
+  {
+    img: "/images/makeup.jpg",
+    title: "Makeup",
+    description: "Professional makeup application",
+    price: "Starting from $60",
+    duration: "45 minutes",
+    image: "/images/makeup.jpg",
+    gallery: ["/images/makeup-1.jpeg", "/images/makeup-2.jpg", "/images/makeup-3.jpg", "/images/makeup-4.jpg"],
+  },
+  {
+    img: "/images/nail-care.jpg",
+    title: "Nail Care",
+    description: "Manicure and pedicure services",
+    price: "Starting from $40",
+    duration: "1 hour",
+    image: "/images/nail-care.jpg",
+    gallery: ["/images/nail-care-1.jpg", "/images/nail-care-2.jpg", "/images/nail-care-3.jpg", "/images/nail-care-4.jpg"],
+  },
+  {
+    img: "/facial.jpg",
+    title: "Facial Treatments",
+    description: "Rejuvenating facial treatments",
+    price: "Starting from $70",
+    duration: "1 hour",
+    image: "/facial.jpg",
+    gallery: ["/facial-1.jpg", "/facial-2.jpg", "/facial-3.jpg", "/facial-4.jpg"],
+  },
+  {
+    img: "/waxing.jpg",
+    title: "Waxing",
+    description: "Full body waxing services",
+    price: "Starting from $30",
+    duration: "30 minutes",
+    image: "/waxing.jpg",
+    gallery: ["/waxing-1.jpg", "/waxing-2.jpg", "/waxing-3.jpg", "/waxing-4.jpg"],
+  },
+  {
+    img: "/massage.jpg",
+    title: "Massage",
+    description: "Relaxing massage therapies",
+    price: "Starting from $80",
+    duration: "1 hour",
+    image: "/massage.jpg",
+    gallery: ["/massage-1.jpg", "/massage-2.jpg", "/massage-3.jpg", "/massage-4.jpg"],
+  },
+];
 
 export default function Services() {
   const [activeTab, setActiveTab] = useState(services[0].title);
@@ -61,16 +67,33 @@ export default function Services() {
     <div className="container mx-auto px-4 py-16">
       <h1 className="text-4xl font-bold mb-12 text-center">Our Services</h1>
       {/* Tab Buttons */}
-      <div className="grid w-full grid-cols-2 lg:grid-cols-3 mb-8 gap-2">
+      <div className="grid w-full grid-cols-2 lg:grid-cols-3 mb-8 gap-4">
         {services.map((service) => (
           <button
             key={service.title}
             onClick={() => setActiveTab(service.title)}
-            className={`py-2 px-4 text-center rounded-lg ${
-              activeTab === service.title ? "bg-blue-500 text-white" : "bg-gray-200"
+            className={`relative w-full h-40 rounded-lg overflow-hidden group ${
+              activeTab === service.title ? "ring-2 ring-blue-500" : ""
             }`}
           >
-            {service.title}
+            {/* Image */}
+            <Image
+              src={service.img || "/placeholder.svg"}
+              alt={service.title}
+              layout="fill"
+              objectFit="cover"
+              className="absolute inset-0 transition-transform duration-300 group-hover:scale-110"
+            />
+            {/* Title Overlay */}
+            <span
+              className={`absolute inset-0 flex items-center justify-center z-10 font-semibold text-lg transition-colors duration-300 ${
+                activeTab === service.title ? "text-white" : "text-black group-hover:text-white"
+              }`}
+            >
+              {service.title}
+            </span>
+            {/* Overlay Effect */}
+            <div className="absolute inset-0 bg-black bg-opacity-30 group-hover:bg-opacity-50 transition-opacity duration-300 z-5"></div>
           </button>
         ))}
       </div>
@@ -85,7 +108,7 @@ export default function Services() {
             >
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
-                  <h2 className="text-2xl font-semibold mb-2">{service.title}</h2>
+                  <h2 className="text-2xl text-blue-600 font-semibold mb-2">{service.title}</h2>
                   <p>{service.description}</p>
                   <p className="mt-4">
                     <strong>Price:</strong> {service.price}
@@ -105,7 +128,7 @@ export default function Services() {
                   alt={service.title}
                   width={400}
                   height={300}
-                  className="w-full h-48 object-cover rounded-lg"
+                  className="w-full h-60 object-cover rounded-lg"
                 />
               </div>
 
@@ -119,7 +142,7 @@ export default function Services() {
                       alt={`${service.title} ${index + 1}`}
                       width={200}
                       height={200}
-                      className="w-full h-32 object-cover rounded-lg"
+                      className="w-full h-52 object-cover rounded-lg"
                     />
                   ))}
                 </div>

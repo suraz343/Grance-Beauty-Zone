@@ -17,7 +17,7 @@ export default function Hero() {
         <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center bg-black/40 p-4">
           <h1 className="text-3xl md:text-7xl font-bold">Discover Your True Beauty</h1>
           <p className="mt-4 text-lg md:text-2xl">Experience luxury beauty treatments at Grace Beauty Parlour</p>
-          <Link href="#book" className="mt-6 px-4 py-2 text-white rounded-lg bg-yellow-400">Book Now</Link>
+          <Link href="#book"className="mt-6 px-4 py-2 text-white rounded-lg bg-yellow-400">Book Now</Link>
         </div>
       </div>
     </div>
