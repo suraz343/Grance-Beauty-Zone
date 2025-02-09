@@ -94,7 +94,7 @@ export default function Book() {
         
         <button
           type="submit"
-          className="w-full py-2 bg-green-400 text-white text-lg font-medium rounded-md hover:bg-green-600 transition-colors"
+          className="w-full py-2 bg-yellow-400 text-white text-lg font-medium rounded-md hover:bg-yellow-600 transition-colors"
         >
           Book Appointment
         </button>
