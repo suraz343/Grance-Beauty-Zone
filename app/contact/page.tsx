@@ -11,7 +11,7 @@ export default function Contact() {
         <div className="p-6 bg-white rounded-lg shadow-lg border">
           <h2 className="text-xl font-semibold mb-4">Get in Touch</h2>
           <p className="text-gray-600 mb-6">
-            We'd love to hear from you. Fill out the form and we'll get back to
+            We&apos;d love to hear from you. Fill out the form and we&apos;ll get back to
             you shortly.
           </p>
           <form>
