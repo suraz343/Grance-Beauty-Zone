@@ -7,7 +7,7 @@ export default function Contact() {
         <h1 className="mt-6 text-3xl font-bold text-center">Contact Us</h1>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+      <div className="m-16 grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
         <div className="p-6 bg-white rounded-lg shadow-lg border">
           <h2 className="text-xl font-semibold mb-4">Get in Touch</h2>
           <p className="text-gray-600 mb-6">
