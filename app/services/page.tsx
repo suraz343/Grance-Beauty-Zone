@@ -38,7 +38,7 @@ export default function Services() {
   const [activeTab, setActiveTab] = useState(services[0].id); // Use `id` instead of title for uniqueness
 
   return (
-    <div id="services" className="mt-10 container mx-auto px-4 py-16">
+    <div id="services" className="container mx-auto px-4 py-16">
       <h1 className="text-4xl font-bold mb-12 text-center">Our Services</h1>
 
       {/* Tab Buttons */}
@@ -57,7 +57,7 @@ export default function Services() {
             }}
           >
             <span
-              className={`absolute inset-0 flex items-center justify-center z-10 font-semibold text-lg transition-colors duration-300 ${
+              className={`absolute inset-0 flex items-center justify-center z-10 font-bold text-lg transition-colors duration-300 ${
                 activeTab === service.id
                   ? "text-white"
                   : "text-black group-hover:text-white"

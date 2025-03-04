@@ -24,9 +24,9 @@ export default function Header() {
   return (
     <header className="bg-white border-b top-0 z-50 relative">
       <div className="container mx-auto px-4 py-2 flex justify-between items-center shadow">
-        <Link href="/" className="text-lg md:text-2xl font-bold text-blue-700">
+        <Link href="/" className="text-lg md:text-2xl font-bold text-red-600">
           Grance Beauty Zone
-          <p className="text-sm md:text-sm text-blue-600">Parasi-3 NawalParasi</p>
+          <p className="text-sm md:text-sm text-red-500">Parasi-3 NawalParasi</p>
         </Link>
         
 
