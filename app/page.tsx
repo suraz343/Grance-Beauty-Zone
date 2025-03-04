@@ -1,6 +1,6 @@
 import React from "react";
 import Hero from "./components/Hero";
-import Services from "./services/Services";
+import Services from "./services/page";
 
 
 export default function Home(){

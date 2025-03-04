@@ -8,7 +8,7 @@ import { Menu, X } from "lucide-react";
 
 const navItems = [
   { href: "/", label: "Home" },
-  { href: "#services", label: "Services" },
+  { href: "/services", label: "Services" },
   { href: "/products", label: "Products" },
   { href: "/offers", label: "Offers" },
   { href: "/blog", label: "Blog" },
@@ -22,7 +22,7 @@ export default function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="bg-white border-b sticky top-0 z-50">
+    <header className="bg-white border-b top-0 z-50 relative">
       <div className="container mx-auto px-4 py-2 flex justify-between items-center shadow">
         <Link href="/" className="text-lg md:text-2xl font-bold text-blue-700">
           Grance Beauty Zone

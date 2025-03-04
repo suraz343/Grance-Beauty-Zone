@@ -5,94 +5,66 @@ import Link from "next/link";
 
 const services = [
   {
+    id: 1, // Added a unique ID for better key management
     img: "/services/hair-1.jpg",
     title: "Hair Styling",
     description: "Expert hair styling for any occasion",
     price: "Starting from $50",
     duration: "1 hour",
-    image: "/services/hair-1.jpg",
-    gallery: ["/services/hair-1.jpg", "/services/hair-2.jpg", "/services/hair-3.jpg", "/services/hair-4.jpg"],
+    gallery: ["/services/hair-1.jpg", "/services/hair-2.jpg"],
   },
   {
+    id: 2,
     img: "/services/makeup.jpg",
     title: "Makeup",
     description: "Professional makeup application",
     price: "Starting from $60",
     duration: "45 minutes",
-    image: "/services/makeup.jpg",
-    gallery: ["/services/makeup-1.jpeg", "/services/makeup-2.jpg", "/services/makeup-3.jpg", "/services/makeup-4.jpg"],
+    gallery: ["/services/makeup-1.jpeg", "/services/makeup-2.jpg"],
   },
   {
+    id: 3,
     img: "/services/nail-care.jpg",
     title: "Nail Care",
     description: "Manicure and pedicure services",
     price: "Starting from $40",
     duration: "1 hour",
-    image: "/services/nail-care.jpg",
-    gallery: ["/services/nail-care-1.jpg", "/services/nail-care-2.jpg", "/services/nail-care-3.jpg", "/serices/nail-care-4.jpg"],
+    gallery: ["/services/nail-care-1.jpg", "/services/nail-care-2.jpg"],
   },
-  {
-    img: "/facial.jpg",
-    title: "Facial Treatments",
-    description: "Rejuvenating facial treatments",
-    price: "Starting from $70",
-    duration: "1 hour",
-    image: "/facial.jpg",
-    gallery: ["/facial-1.jpg", "/facial-2.jpg", "/facial-3.jpg", "/facial-4.jpg"],
-  },
-  {
-    img: "/waxing.jpg",
-    title: "Waxing",
-    description: "Full body waxing services",
-    price: "Starting from $30",
-    duration: "30 minutes",
-    image: "/waxing.jpg",
-    gallery: ["/waxing-1.jpg", "/waxing-2.jpg", "/waxing-3.jpg", "/waxing-4.jpg"],
-  },
-  {
-    img: "/massage.jpg",
-    title: "Massage",
-    description: "Relaxing massage therapies",
-    price: "Starting from $80",
-    duration: "1 hour",
-    image: "/massage.jpg",
-    gallery: ["/massage-1.jpg", "/massage-2.jpg", "/massage-3.jpg", "/massage-4.jpg"],
-  },
+  // Add more services as needed
 ];
 
 export default function Services() {
-  const [activeTab, setActiveTab] = useState(services[0].title);
+  const [activeTab, setActiveTab] = useState(services[0].id); // Use `id` instead of title for uniqueness
 
   return (
     <div id="services" className="mt-10 container mx-auto px-4 py-16">
       <h1 className="text-4xl font-bold mb-12 text-center">Our Services</h1>
+
       {/* Tab Buttons */}
-      <div className="grid w-full grid-cols-2 lg:grid-cols-3 mb-8 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
         {services.map((service) => (
           <button
-            key={service.title}
-            onClick={() => setActiveTab(service.title)}
+            key={service.id} // Use `id` as the key
+            onClick={() => setActiveTab(service.id)} // Set `id` as activeTab
             className={`relative w-full h-40 rounded-lg overflow-hidden group ${
-              activeTab === service.title ? "ring-2 ring-blue-500" : ""
+              activeTab === service.id ? "ring-2 ring-blue-500" : ""
             }`}
+            style={{
+              backgroundImage: `url(${service.img})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
           >
-            
-            <Image
-              src={service.img || "/placeholder.svg"}
-              alt={service.title}
-              layout="fill"
-              objectFit="cover"
-              className="absolute inset-0 transition-transform duration-300 group-hover:scale-110"
-            />
-          
             <span
               className={`absolute inset-0 flex items-center justify-center z-10 font-semibold text-lg transition-colors duration-300 ${
-                activeTab === service.title ? "text-white" : "text-black group-hover:text-white"
+                activeTab === service.id
+                  ? "text-white"
+                  : "text-black group-hover:text-white"
               }`}
             >
               {service.title}
             </span>
-            {/* Overlay Effect */}
             <div className="absolute inset-0 bg-black bg-opacity-30 group-hover:bg-opacity-50 transition-opacity duration-300 z-5"></div>
           </button>
         ))}
@@ -101,9 +73,9 @@ export default function Services() {
       {/* Tab Content */}
       {services.map(
         (service) =>
-          activeTab === service.title && (
+          activeTab === service.id && ( // Ensure content matches activeTab by ID
             <div
-              key={service.title}
+              key={service.id} // Unique key for tab content
               className="border p-6 rounded-lg shadow-lg space-y-6"
             >
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -124,7 +96,7 @@ export default function Services() {
                   </Link>
                 </div>
                 <Image
-                  src={service.image || "/placeholder.svg"}
+                  src={service.img}
                   alt={service.title}
                   width={400}
                   height={300}
@@ -138,11 +110,12 @@ export default function Services() {
                   {service.gallery.map((img, index) => (
                     <Image
                       key={index}
-                      src={img || "/placeholder.svg"}
+                      src={img}
                       alt={`${service.title} ${index + 1}`}
                       width={200}
                       height={200}
                       className="w-full h-52 object-cover rounded-lg"
+                      loading="lazy"
                     />
                   ))}
                 </div>
