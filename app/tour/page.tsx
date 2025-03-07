@@ -14,8 +14,8 @@ const images = [
 
 export default function Tour() {
   return (
-    <div id="tour" className="m-6 container px-6 py-16">
-      <h1 className="font-extrabold text-4xl text-center mb-6 text-gray-800">
+    <div id="tour" className="container px-6 py-16">
+      <h1 className="font-extrabold text-3xl text-center mb-6 text-gray-800">
         Have a Virtual Tour
       </h1>
 
