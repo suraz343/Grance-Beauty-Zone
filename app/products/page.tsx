@@ -42,17 +42,17 @@ const products = [
 
 export default function ProductPage(){
     return(
-        <div id="products" className="container mx-auto px-6 py-2">
+        <div id="products" className="container mx-auto px-2 py-2">
             <div className="mt-6 flex justify-center items-center">
             <h1 className="font-bold text-black text-3xl">Our Products</h1>
             </div>
-            <div className="m-6 md:m-16 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8 shadow-lg border rounded-lg bg-white">
+            <div className="md:m-16 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8 shadow-lg border rounded-lg bg-white">
                 {products.map((product,index) =>(
-                    <div key={index} className="m-4 flex flex-col p-2 shadow border rounded-lg hover:scale-105 transition">
+                    <div key={index} className="flex flex-col p-2 shadow border rounded-lg hover:scale-105 transition">
                     <Image src={product.image} alt={product.name} height={200} width={400} className="w-full h-48 object-cover rounded-t-lg" />
-                    <h1 className="text-2xl font-bold text-black">{product.name}</h1>
+                    <h1 className="text-lg md:text-2xl font-bold text-black">{product.name}</h1>
                     <p className="text-sm text-gray-500">{product.description}</p>
-                    <p className="mt-4 text-2xl font-bold">{product.price}</p>
+                    <p className="mt-4 text-xl md:text-2xl font-bold">{product.price}</p>
                     <button className="w-full h-10 rounded-lg bg-yellow-400 p-2">Add to Cart</button>
                     </div>
 
