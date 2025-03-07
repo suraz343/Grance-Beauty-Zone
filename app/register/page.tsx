@@ -10,7 +10,7 @@ export default function Register() {
   const router = useRouter(); // Initialize router for redirection
 
   // Handle form input changes
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
