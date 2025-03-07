@@ -22,12 +22,12 @@ export default function RegisterPage() {
     e.preventDefault();
     setLoading(true);
     setError(null);
-
+  
     try {
       console.log("User Data:", user);
       // Add registration logic here (API call)
-    } catch (err) {
-      setError("Something went wrong");
+    } catch {
+      setError("Something went wrong"); // ✅ Removed `err`
     } finally {
       setLoading(false);
     }
