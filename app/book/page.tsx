@@ -7,7 +7,7 @@ export default function Book() {
       <p className="text-sm text-gray-500 text-center mt-2">
         Fill out the form below to schedule your beauty treatment at Grance Beauty Zone.
       </p>
-      <form className="mt-8 space-y-6">
+      <form  className="mt-8 space-y-6">
 
         <div className="flex space-x-6">
         <div className="w-1/2">

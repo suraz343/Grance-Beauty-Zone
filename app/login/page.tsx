@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { useRouter } from "next/navigation"; // For redirection
+import { useRouter } from "next/navigation"; 
 
 export default function Login() {
   const router = useRouter();
@@ -13,12 +13,12 @@ export default function Login() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // Handle Input Change
+  
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Handle Form Submission
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -45,12 +45,12 @@ export default function Login() {
         throw new Error(data.error || "Login failed");
       }
 
-      // Store token in localStorage
+      
       localStorage.setItem("token", data.token);
       localStorage.setItem("userID", data.userID);
 
-      // Redirect to Home Page
-      router.push("/"); // Change this to your actual homepage route
+  
+      router.push("/"); 
 
     } catch (err) {
       setError(err.message);
@@ -99,11 +99,12 @@ export default function Login() {
           </button>
         </form>
 
-        {/* Forgot Password & Signup Links */}
+        
         <div className="text-center mt-4">
           <a href="/register" className="text-gray-800 hover:underline">Forgot Password?</a>
           <p className="mt-2 text-sm">
-            Don't have an account? <a href="/register" className="text-gray-800 hover:underline">Sign Up</a>
+            Dont have an account? 
+            <a href="/register" className="text-gray-800 hover:underline">Sign Up</a>
           </p>
         </div>
       </div>
