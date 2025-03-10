@@ -8,7 +8,7 @@ export default function Hero() {
     <div className="w-full h-screen">
       <div className="w-full h-3/4">
         <Image
-          src="/Images/grance_beauty_zone.jpg"
+          src="/Images/tour1.jpg"
           alt="grance_beauty_zone_image"
           fill
           className="object-cover"

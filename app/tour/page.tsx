@@ -7,7 +7,7 @@ import { Navigation, Autoplay } from "swiper/modules";
 import Image from "next/image";
 
 const images = [
-  "/tour/tour-1.jpg",
+  "/images/tour1.jpg",
   "/tour/tour-2.jpg",
   "/tour/tour-3.jpg",
 ];
