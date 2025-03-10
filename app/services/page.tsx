@@ -143,7 +143,7 @@ export default function Services() {
             <div key={service.id} className="border p-6 rounded-lg shadow-lg space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
-                  <h2 className="text-2xl text-blue-600 font-semibold mb-2">{service.title}</h2>
+                  <h2 className="text-2xl text-blue-600 font-extrabold mb-2">{service.title}</h2>
                   <p>{service.description}</p>
                   <p className="mt-4"><strong>Price:</strong> {service.price}</p>
                   <p><strong>Duration:</strong> {service.duration}</p>
@@ -184,7 +184,7 @@ export default function Services() {
       <div className="text-center mt-8">
         <button
           onClick={() => setShowAll(!showAll)}
-          className="px-6 py-2 bg-green-600 text-white rounded-lg font-semibold transition duration-300 hover:bg-green-700"
+          className="px-6 py-2 bg-green-400 text-white rounded-lg font-semibold transition duration-300 hover:bg-green-700"
         >
           {showAll ? "Show Less" : "View All Services"}
         </button>
