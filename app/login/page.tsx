@@ -52,10 +52,12 @@ export default function Login() {
       // ✅ Redirect to homepage
       router.push("/");
 
-    } catch (err: any) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError("An unexpected error occurred.");
+      }
     }
   };
 
@@ -104,7 +106,7 @@ export default function Login() {
         <div className="text-center mt-4">
           <a href="/forgot-password" className="text-gray-800 hover:underline">Forgot Password?</a>
           <p className="mt-2 text-sm">
-            Don't have an account? 
+            Dont have an account? 
             <a href="/register" className="text-gray-800 hover:underline"> Sign Up</a>
           </p>
         </div>
