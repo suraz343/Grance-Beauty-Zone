@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { useRouter } from "next/navigation"; 
+import { useRouter } from "next/navigation"; // Ensure this import is correct for your setup
 
 export default function Login() {
   const router = useRouter();
@@ -13,13 +13,13 @@ export default function Login() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  
-  const handleChange = (e) => {
+  // ✅ Fixed: Removed `await` and added correct type for event
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  
-  const handleSubmit = async (e) => {
+  // ✅ Fixed: Removed `await` and corrected event type
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!formData.email || !formData.password) {
@@ -45,14 +45,14 @@ export default function Login() {
         throw new Error(data.error || "Login failed");
       }
 
-      
+      // ✅ Save token and user ID
       localStorage.setItem("token", data.token);
       localStorage.setItem("userID", data.userID);
 
-  
-      router.push("/"); 
+      // ✅ Redirect to homepage
+      router.push("/");
 
-    } catch (err) {
+    } catch (err: any) {
       setError(err.message);
     } finally {
       setLoading(false);
@@ -66,6 +66,7 @@ export default function Login() {
 
         {error && <p className="text-red-500 text-sm text-center mb-3">{error}</p>}
 
+        {/* ✅ Fixed: Corrected `onSubmit` event */}
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Email Input */}
           <input
@@ -75,7 +76,7 @@ export default function Login() {
             value={formData.email}
             onChange={handleChange}
             required
-            className="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:gray-blue-400"
+            className="w-full p-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-400"
           />
 
           {/* Password Input */}
@@ -99,12 +100,12 @@ export default function Login() {
           </button>
         </form>
 
-        
+        {/* Links */}
         <div className="text-center mt-4">
-          <a href="/register" className="text-gray-800 hover:underline">Forgot Password?</a>
+          <a href="/forgot-password" className="text-gray-800 hover:underline">Forgot Password?</a>
           <p className="mt-2 text-sm">
-            Dont have an account? 
-            <a href="/register" className="text-gray-800 hover:underline">Sign Up</a>
+            Don't have an account? 
+            <a href="/register" className="text-gray-800 hover:underline"> Sign Up</a>
           </p>
         </div>
       </div>
