@@ -20,9 +20,19 @@ export default function Register() {
       const response = await axios.post("http://localhost:5000/api/users/register", user);
       alert(response.data.message);
       setUser({ name: "", email: "", phone: "", password: "" }); // Clear form
-    } catch (error) {
+    } catch (error: any) {
       console.error("Registration failed", error);
-      setError("Registration failed. Please try again.");
+
+      if (error.response) {
+        // Check if the error is due to duplicate email
+        if (error.response.status === 400 && error.response.data.error.includes("Email address already exists")) {
+          setError("This email is already registered. Please use a different email.");
+        } else {
+          setError(error.response.data.error || "Registration failed. Please try again.");
+        }
+      } else {
+        setError("An unexpected error occurred. Please try again.");
+      }
     } finally {
       setLoading(false);
     }
