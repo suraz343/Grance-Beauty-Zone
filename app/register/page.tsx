@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 
 export default function Register() {
   const [user, setUser] = useState({ name: "", email: "", phone: "", password: "" });
@@ -20,15 +20,14 @@ export default function Register() {
       const response = await axios.post("http://localhost:5000/api/users/register", user);
       alert(response.data.message);
       setUser({ name: "", email: "", phone: "", password: "" }); // Clear form
-    } catch (error: any) {
-      console.error("Registration failed", error);
+    } catch (error) {
+      const axiosError = error as AxiosError<{ error: string }>; // Type assertion
 
-      if (error.response) {
-        // Check if the error is due to duplicate email
-        if (error.response.status === 400 && error.response.data.error.includes("Email address already exists")) {
+      if (axiosError.response) {
+        if (axiosError.response.status === 400 && axiosError.response.data?.error.includes("Email address already exists")) {
           setError("This email is already registered. Please use a different email.");
         } else {
-          setError(error.response.data.error || "Registration failed. Please try again.");
+          setError(axiosError.response.data?.error || "Registration failed. Please try again.");
         }
       } else {
         setError("An unexpected error occurred. Please try again.");
